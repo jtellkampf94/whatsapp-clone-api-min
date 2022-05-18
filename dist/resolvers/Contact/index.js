@@ -33,7 +33,7 @@ let ContactResolver = class ContactResolver {
     }
     async getContacts({ req }) {
         const userId = Number(req.session.userId);
-        const contactIds = await typeorm_1.getConnection()
+        const contactIds = await (0, typeorm_1.getConnection)()
             .createQueryBuilder(Contact_1.Contact, "contactInfo")
             .leftJoinAndSelect("contactInfo.contact", "contact")
             .where("contactInfo.userId = :userId", { userId })
@@ -54,49 +54,49 @@ let ContactResolver = class ContactResolver {
     }
 };
 __decorate([
-    type_graphql_1.FieldResolver(() => User_1.User),
-    __param(0, type_graphql_1.Root()),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.FieldResolver)(() => User_1.User),
+    __param(0, (0, type_graphql_1.Root)()),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Contact_1.Contact, Object]),
     __metadata("design:returntype", Promise)
 ], ContactResolver.prototype, "contact", null);
 __decorate([
-    type_graphql_1.FieldResolver(() => User_1.User),
-    __param(0, type_graphql_1.Root()),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.FieldResolver)(() => User_1.User),
+    __param(0, (0, type_graphql_1.Root)()),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Contact_1.Contact, Object]),
     __metadata("design:returntype", Promise)
 ], ContactResolver.prototype, "user", null);
 __decorate([
-    type_graphql_1.Mutation(() => Contact_1.Contact),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("contactId", () => type_graphql_1.Int)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => Contact_1.Contact),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("contactId", () => type_graphql_1.Int)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], ContactResolver.prototype, "addToContacts", null);
 __decorate([
-    type_graphql_1.Query(() => [User_1.User]),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Query)(() => [User_1.User]),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ContactResolver.prototype, "getContacts", null);
 __decorate([
-    type_graphql_1.Mutation(() => Boolean),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("contactId", () => type_graphql_1.Int)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("contactId", () => type_graphql_1.Int)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], ContactResolver.prototype, "removeFromContacts", null);
 ContactResolver = __decorate([
-    type_graphql_1.Resolver((of) => Contact_1.Contact)
+    (0, type_graphql_1.Resolver)((of) => Contact_1.Contact)
 ], ContactResolver);
 exports.ContactResolver = ContactResolver;
 //# sourceMappingURL=index.js.map

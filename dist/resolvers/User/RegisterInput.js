@@ -14,31 +14,31 @@ const type_graphql_1 = require("type-graphql");
 let RegisterInput = class RegisterInput {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], RegisterInput.prototype, "username", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], RegisterInput.prototype, "email", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], RegisterInput.prototype, "firstName", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], RegisterInput.prototype, "lastName", void 0);
 __decorate([
-    type_graphql_1.Field({ nullable: true }),
+    (0, type_graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], RegisterInput.prototype, "profilePictureUrl", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], RegisterInput.prototype, "password", void 0);
 RegisterInput = __decorate([
-    type_graphql_1.InputType()
+    (0, type_graphql_1.InputType)()
 ], RegisterInput);
 exports.RegisterInput = RegisterInput;
 //# sourceMappingURL=RegisterInput.js.map

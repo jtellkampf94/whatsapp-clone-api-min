@@ -16,37 +16,37 @@ const Chat_1 = require("./Chat");
 let ChatMember = class ChatMember extends typeorm_1.BaseEntity {
 };
 __decorate([
-    typeorm_1.PrimaryColumn(),
+    (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", Number)
 ], ChatMember.prototype, "chatId", void 0);
 __decorate([
-    typeorm_1.PrimaryColumn(),
+    (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", Number)
 ], ChatMember.prototype, "userId", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => Chat_1.Chat, (chat) => chat.id, {
+    (0, typeorm_1.ManyToOne)(() => Chat_1.Chat, (chat) => chat.id, {
         onDelete: "CASCADE",
     }),
     __metadata("design:type", Chat_1.Chat)
 ], ChatMember.prototype, "chat", void 0);
 __decorate([
-    typeorm_1.ManyToOne(() => User_1.User, (user) => user.id),
+    (0, typeorm_1.ManyToOne)(() => User_1.User, (user) => user.id),
     __metadata("design:type", User_1.User)
 ], ChatMember.prototype, "user", void 0);
 __decorate([
-    typeorm_1.Column({ default: true }),
+    (0, typeorm_1.Column)({ default: true }),
     __metadata("design:type", Boolean)
 ], ChatMember.prototype, "isActive", void 0);
 __decorate([
-    typeorm_1.CreateDateColumn(),
+    (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], ChatMember.prototype, "createdAt", void 0);
 __decorate([
-    typeorm_1.UpdateDateColumn(),
+    (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], ChatMember.prototype, "updatedAt", void 0);
 ChatMember = __decorate([
-    typeorm_1.Entity()
+    (0, typeorm_1.Entity)()
 ], ChatMember);
 exports.ChatMember = ChatMember;
 //# sourceMappingURL=ChatMember.js.map

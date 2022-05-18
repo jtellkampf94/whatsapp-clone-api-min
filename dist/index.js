@@ -32,7 +32,7 @@ const ChatMemberLoader_1 = require("./loaders/ChatMemberLoader");
 const MessageLoader_1 = require("./loaders/MessageLoader");
 dotenv_1.default.config();
 const main = async () => {
-    const connection = await typeorm_1.createConnection({
+    const connection = await (0, typeorm_1.createConnection)({
         type: "postgres",
         url: process.env.PG_DATABASE_URL,
         logging: true,
@@ -40,14 +40,14 @@ const main = async () => {
         entities: [User_1.User, Chat_1.Chat, ChatMember_1.ChatMember, Message_1.Message, Contact_1.Contact, Image_1.Image],
     });
     await connection.runMigrations();
-    const app = express_1.default();
+    const app = (0, express_1.default)();
     const httpServer = http_1.default.createServer(app);
-    const RedisStore = connect_redis_1.default(express_session_1.default);
+    const RedisStore = (0, connect_redis_1.default)(express_session_1.default);
     const redis = new ioredis_1.default({
         host: process.env.REDIS_HOST,
         port: Number(process.env.REDIS_PORT),
     });
-    const sessionMiddleware = express_session_1.default({
+    const sessionMiddleware = (0, express_session_1.default)({
         store: new RedisStore({
             client: redis,
             disableTouch: true,
@@ -63,13 +63,13 @@ const main = async () => {
         },
     });
     app.set("proxy", 1);
-    app.use(cors_1.default({
+    app.use((0, cors_1.default)({
         origin: process.env.CORS_ORIGIN,
         credentials: true,
     }));
     app.use(sessionMiddleware);
     const apolloServer = new apollo_server_express_1.ApolloServer({
-        schema: await type_graphql_1.buildSchema({
+        schema: await (0, type_graphql_1.buildSchema)({
             resolvers: [
                 User_2.UserResolver,
                 Message_2.MessageResolver,
@@ -95,9 +95,9 @@ const main = async () => {
             res,
             redis,
             connection,
-            chatMemberLoader: ChatMemberLoader_1.chatMemberLoader(),
-            userLoader: UserLoader_1.userLoader(),
-            messageLoader: MessageLoader_1.messageLoader(),
+            chatMemberLoader: (0, ChatMemberLoader_1.chatMemberLoader)(),
+            userLoader: (0, UserLoader_1.userLoader)(),
+            messageLoader: (0, MessageLoader_1.messageLoader)(),
         }),
     });
     await apolloServer.start();

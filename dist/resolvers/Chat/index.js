@@ -38,7 +38,7 @@ let ChatResolver = class ChatResolver {
         if (userIds.length === 2 && !groupName) {
             const firstUserId = userIds[0];
             const secondUserId = userIds[1];
-            const chat = await typeorm_1.getConnection().query(`
+            const chat = await (0, typeorm_1.getConnection)().query(`
         SELECT c.*
           FROM public.chat c 
             INNER JOIN public.chat_member m1 
@@ -51,7 +51,7 @@ let ChatResolver = class ChatResolver {
             if (chat.length === 1)
                 return chat[0];
         }
-        const chat = await typeorm_1.getManager().transaction(async (transactionalEntityManager) => {
+        const chat = await (0, typeorm_1.getManager)().transaction(async (transactionalEntityManager) => {
             const chat = await transactionalEntityManager.save(Chat_1.Chat.create({
                 createdById,
                 groupName,
@@ -70,7 +70,7 @@ let ChatResolver = class ChatResolver {
     }
     getChats({ req }) {
         const userId = Number(req.session.userId);
-        return typeorm_1.getConnection()
+        return (0, typeorm_1.getConnection)()
             .createQueryBuilder()
             .select("chat")
             .from(Chat_1.Chat, "chat")
@@ -108,62 +108,62 @@ let ChatResolver = class ChatResolver {
     }
 };
 __decorate([
-    type_graphql_1.FieldResolver(() => [Message_1.Message], { nullable: true }),
-    __param(0, type_graphql_1.Root()),
-    __param(1, type_graphql_1.Ctx()),
-    __param(2, type_graphql_1.Arg("limit", () => type_graphql_1.Int)),
-    __param(3, type_graphql_1.Arg("cursor", () => String, { nullable: true })),
+    (0, type_graphql_1.FieldResolver)(() => [Message_1.Message], { nullable: true }),
+    __param(0, (0, type_graphql_1.Root)()),
+    __param(1, (0, type_graphql_1.Ctx)()),
+    __param(2, (0, type_graphql_1.Arg)("limit", () => type_graphql_1.Int)),
+    __param(3, (0, type_graphql_1.Arg)("cursor", () => String, { nullable: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Chat_1.Chat, Object, Number, Object]),
     __metadata("design:returntype", Promise)
 ], ChatResolver.prototype, "messages", null);
 __decorate([
-    type_graphql_1.FieldResolver(() => [User_1.User]),
-    __param(0, type_graphql_1.Root()),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.FieldResolver)(() => [User_1.User]),
+    __param(0, (0, type_graphql_1.Root)()),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Chat_1.Chat, Object]),
     __metadata("design:returntype", Promise)
 ], ChatResolver.prototype, "members", null);
 __decorate([
-    type_graphql_1.Mutation(() => Chat_1.Chat),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("userIds", () => [type_graphql_1.Int])),
-    __param(1, type_graphql_1.Arg("groupName", { nullable: true })),
-    __param(2, type_graphql_1.Arg("groupAvatarUrl", { nullable: true })),
-    __param(3, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => Chat_1.Chat),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("userIds", () => [type_graphql_1.Int])),
+    __param(1, (0, type_graphql_1.Arg)("groupName", { nullable: true })),
+    __param(2, (0, type_graphql_1.Arg)("groupAvatarUrl", { nullable: true })),
+    __param(3, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Array, String, String, Object]),
     __metadata("design:returntype", Promise)
 ], ChatResolver.prototype, "createChat", null);
 __decorate([
-    type_graphql_1.Query(() => [Chat_1.Chat]),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Query)(() => [Chat_1.Chat]),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ChatResolver.prototype, "getChats", null);
 __decorate([
-    type_graphql_1.Query(() => Chat_1.Chat),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("chatId", () => type_graphql_1.Int)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Query)(() => Chat_1.Chat),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("chatId", () => type_graphql_1.Int)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], ChatResolver.prototype, "getChat", null);
 __decorate([
-    type_graphql_1.Mutation(() => Boolean),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("chatId", () => type_graphql_1.Int)),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("chatId", () => type_graphql_1.Int)),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], ChatResolver.prototype, "exitChat", null);
 ChatResolver = __decorate([
-    type_graphql_1.Resolver((of) => Chat_1.Chat)
+    (0, type_graphql_1.Resolver)((of) => Chat_1.Chat)
 ], ChatResolver);
 exports.ChatResolver = ChatResolver;
 //# sourceMappingURL=index.js.map

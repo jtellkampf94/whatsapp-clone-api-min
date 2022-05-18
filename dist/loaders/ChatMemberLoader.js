@@ -9,7 +9,7 @@ const dataloader_1 = __importDefault(require("dataloader"));
 const ChatMember_1 = require("../entities/ChatMember");
 const batchChatMembers = async (chatIds) => {
     const chatMembers = await ChatMember_1.ChatMember.find({
-        where: { chatId: typeorm_1.In([...chatIds]) },
+        where: { chatId: (0, typeorm_1.In)([...chatIds]) },
         relations: ["user"],
     });
     const chatMemberMap = {};

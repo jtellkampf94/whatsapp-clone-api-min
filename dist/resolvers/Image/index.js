@@ -20,7 +20,7 @@ const Image_1 = require("../../entities/Image");
 const amazonS3Config_1 = require("../../config/amazonS3Config");
 let ImageResolver = class ImageResolver {
     async getPresignedUrl({ req }) {
-        const key = `${req.session.userId}/${uuid_1.v4()}.jpg`;
+        const key = `${req.session.userId}/${(0, uuid_1.v4)()}.jpg`;
         const presignedUrl = await amazonS3Config_1.s3.getSignedUrl("putObject", {
             Bucket: process.env.AWS_S3_BUCKET_NAME,
             ContentType: "image/jpeg",
@@ -31,15 +31,15 @@ let ImageResolver = class ImageResolver {
     }
 };
 __decorate([
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    type_graphql_1.Query(() => Image_1.Image),
-    __param(0, type_graphql_1.Ctx()),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    (0, type_graphql_1.Query)(() => Image_1.Image),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], ImageResolver.prototype, "getPresignedUrl", null);
 ImageResolver = __decorate([
-    type_graphql_1.Resolver((of) => Image_1.Image)
+    (0, type_graphql_1.Resolver)((of) => Image_1.Image)
 ], ImageResolver);
 exports.ImageResolver = ImageResolver;
 //# sourceMappingURL=index.js.map

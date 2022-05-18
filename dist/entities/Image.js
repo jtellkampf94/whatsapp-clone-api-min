@@ -14,15 +14,15 @@ const type_graphql_1 = require("type-graphql");
 let Image = class Image {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], Image.prototype, "presignedUrl", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], Image.prototype, "key", void 0);
 Image = __decorate([
-    type_graphql_1.ObjectType()
+    (0, type_graphql_1.ObjectType)()
 ], Image);
 exports.Image = Image;
 //# sourceMappingURL=Image.js.map

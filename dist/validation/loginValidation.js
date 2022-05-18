@@ -5,10 +5,10 @@ const User_1 = require("../entities/User");
 const registerValidation_1 = require("./registerValidation");
 const loginValidation = async (options) => {
     let errors = [];
-    if (registerValidation_1.isEmpty(options.password)) {
+    if ((0, registerValidation_1.isEmpty)(options.password)) {
         errors.push({ field: "password", message: "Please enter your password" });
     }
-    if (registerValidation_1.isEmpty(options.emailOrUsername)) {
+    if ((0, registerValidation_1.isEmpty)(options.emailOrUsername)) {
         errors.push({
             field: "emailOrUsername",
             message: "Please enter email address or username",

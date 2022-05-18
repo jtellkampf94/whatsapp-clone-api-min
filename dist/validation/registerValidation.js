@@ -24,7 +24,7 @@ const isEmpty = (text) => {
 exports.isEmpty = isEmpty;
 const registerValidation = async (options) => {
     let errors = [];
-    if (exports.isEmpty(options.username)) {
+    if ((0, exports.isEmpty)(options.username)) {
         errors.push({
             field: "username",
             message: "Please enter a username",
@@ -47,7 +47,7 @@ const registerValidation = async (options) => {
             });
         }
     }
-    if (exports.isEmpty(options.email)) {
+    if ((0, exports.isEmpty)(options.email)) {
         errors.push({
             field: "email",
             message: "Please enter your email address",
@@ -64,7 +64,7 @@ const registerValidation = async (options) => {
             errors.push({ field: "email", message: "Email already in use." });
         }
     }
-    if (exports.isEmpty(options.firstName)) {
+    if ((0, exports.isEmpty)(options.firstName)) {
         errors.push({
             field: "firstName",
             message: "Please enter your first name",
@@ -76,7 +76,7 @@ const registerValidation = async (options) => {
             message: "First name must be between 1 and 25 characters long.",
         });
     }
-    if (exports.isEmpty(options.lastName)) {
+    if ((0, exports.isEmpty)(options.lastName)) {
         errors.push({
             field: "lastName",
             message: "Please enter your last name",
@@ -88,7 +88,7 @@ const registerValidation = async (options) => {
             message: "Last name must be between 1 and 25 characters long.",
         });
     }
-    if (exports.isEmpty(options.password)) {
+    if ((0, exports.isEmpty)(options.password)) {
         errors.push({
             field: "password",
             message: "Please enter a password",

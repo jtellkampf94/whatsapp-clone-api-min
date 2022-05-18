@@ -18,56 +18,56 @@ const ChatMember_1 = require("./ChatMember");
 let Chat = class Chat extends typeorm_1.BaseEntity {
 };
 __decorate([
-    type_graphql_1.Field(() => type_graphql_1.ID),
-    typeorm_1.PrimaryGeneratedColumn(),
+    (0, type_graphql_1.Field)(() => type_graphql_1.ID),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Chat.prototype, "id", void 0);
 __decorate([
-    type_graphql_1.Field(() => Date),
-    typeorm_1.CreateDateColumn(),
+    (0, type_graphql_1.Field)(() => Date),
+    (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], Chat.prototype, "createdAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => Date),
-    typeorm_1.UpdateDateColumn(),
+    (0, type_graphql_1.Field)(() => Date),
+    (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], Chat.prototype, "updatedAt", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User),
-    typeorm_1.ManyToOne(() => User_1.User),
+    (0, type_graphql_1.Field)(() => User_1.User),
+    (0, typeorm_1.ManyToOne)(() => User_1.User),
     __metadata("design:type", User_1.User)
 ], Chat.prototype, "createdBy", void 0);
 __decorate([
-    typeorm_1.Column(),
-    type_graphql_1.Field(),
+    (0, typeorm_1.Column)(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Number)
 ], Chat.prototype, "createdById", void 0);
 __decorate([
-    type_graphql_1.Field(() => [Message_1.Message], { nullable: true }),
-    typeorm_1.OneToMany(() => Message_1.Message, (message) => message.chat),
+    (0, type_graphql_1.Field)(() => [Message_1.Message], { nullable: true }),
+    (0, typeorm_1.OneToMany)(() => Message_1.Message, (message) => message.chat),
     __metadata("design:type", Array)
 ], Chat.prototype, "messages", void 0);
 __decorate([
-    type_graphql_1.Field(() => [User_1.User]),
+    (0, type_graphql_1.Field)(() => [User_1.User]),
     __metadata("design:type", Array)
 ], Chat.prototype, "members", void 0);
 __decorate([
-    typeorm_1.OneToMany(() => ChatMember_1.ChatMember, (chatMember) => chatMember.chat),
+    (0, typeorm_1.OneToMany)(() => ChatMember_1.ChatMember, (chatMember) => chatMember.chat),
     __metadata("design:type", Array)
 ], Chat.prototype, "chatMembers", void 0);
 __decorate([
-    type_graphql_1.Field({ nullable: true }),
-    typeorm_1.Column({ nullable: true, default: null }),
+    (0, type_graphql_1.Field)({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true, default: null }),
     __metadata("design:type", String)
 ], Chat.prototype, "groupName", void 0);
 __decorate([
-    type_graphql_1.Field({ nullable: true }),
-    typeorm_1.Column({ nullable: true, default: null }),
+    (0, type_graphql_1.Field)({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true, default: null }),
     __metadata("design:type", String)
 ], Chat.prototype, "groupAvatarUrl", void 0);
 Chat = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Chat);
 exports.Chat = Chat;
 //# sourceMappingURL=Chat.js.map

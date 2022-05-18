@@ -34,47 +34,47 @@ const loginValidation_1 = require("../../validation/loginValidation");
 let PaginatedUsers = class PaginatedUsers {
 };
 __decorate([
-    type_graphql_1.Field(() => [User_1.User]),
+    (0, type_graphql_1.Field)(() => [User_1.User]),
     __metadata("design:type", Array)
 ], PaginatedUsers.prototype, "users", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Boolean)
 ], PaginatedUsers.prototype, "hasMore", void 0);
 PaginatedUsers = __decorate([
-    type_graphql_1.ObjectType()
+    (0, type_graphql_1.ObjectType)()
 ], PaginatedUsers);
 exports.PaginatedUsers = PaginatedUsers;
 let FieldError = class FieldError {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], FieldError.prototype, "field", void 0);
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", String)
 ], FieldError.prototype, "message", void 0);
 FieldError = __decorate([
-    type_graphql_1.ObjectType()
+    (0, type_graphql_1.ObjectType)()
 ], FieldError);
 exports.FieldError = FieldError;
 let UserResponse = class UserResponse {
 };
 __decorate([
-    type_graphql_1.Field(),
+    (0, type_graphql_1.Field)(),
     __metadata("design:type", Boolean)
 ], UserResponse.prototype, "ok", void 0);
 __decorate([
-    type_graphql_1.Field(() => [FieldError], { nullable: true }),
+    (0, type_graphql_1.Field)(() => [FieldError], { nullable: true }),
     __metadata("design:type", Array)
 ], UserResponse.prototype, "errors", void 0);
 __decorate([
-    type_graphql_1.Field(() => User_1.User, { nullable: true }),
+    (0, type_graphql_1.Field)(() => User_1.User, { nullable: true }),
     __metadata("design:type", User_1.User)
 ], UserResponse.prototype, "user", void 0);
 UserResponse = __decorate([
-    type_graphql_1.ObjectType()
+    (0, type_graphql_1.ObjectType)()
 ], UserResponse);
 exports.UserResponse = UserResponse;
 let UserResolver = class UserResolver {
@@ -94,7 +94,7 @@ let UserResolver = class UserResolver {
         const userId = Number(req.session.userId);
         if (userId !== user.id)
             throw new Error("You are unauthorized to view chat of this user");
-        return typeorm_1.getRepository(Chat_1.Chat)
+        return (0, typeorm_1.getRepository)(Chat_1.Chat)
             .createQueryBuilder("chat")
             .where((qb) => {
             const subQuery = qb
@@ -123,7 +123,7 @@ let UserResolver = class UserResolver {
         return user;
     }
     async register(options, { req }) {
-        const errors = await registerValidation_1.registerValidation(options);
+        const errors = await (0, registerValidation_1.registerValidation)(options);
         if (errors.length > 0) {
             return { ok: false, errors };
         }
@@ -136,7 +136,7 @@ let UserResolver = class UserResolver {
         return { ok: true, user };
     }
     async login(options, { req }) {
-        const { errors, user } = await loginValidation_1.loginValidation(options);
+        const { errors, user } = await (0, loginValidation_1.loginValidation)(options);
         const { password } = options;
         if (user && errors.length === 0) {
             const isPasswordCorrect = await bcryptjs_1.default.compare(password, user.password);
@@ -159,7 +159,7 @@ let UserResolver = class UserResolver {
         user.lastName = lastName;
         if (profilePictureUrl) {
             if (user.profilePictureUrl) {
-                const key = getAWSS3Key_1.getAWSS3Key(user.profilePictureUrl);
+                const key = (0, getAWSS3Key_1.getAWSS3Key)(user.profilePictureUrl);
                 amazonS3Config_1.s3.deleteObject({ Bucket: process.env.AWS_S3_BUCKET_NAME, Key: key }, (err, data) => {
                     if (err)
                         console.log(err);
@@ -175,7 +175,7 @@ let UserResolver = class UserResolver {
     async searchUsers(searchTerm, limit, page) {
         const limitPlusOne = limit + 1;
         const offset = limit * page;
-        const users = await typeorm_1.getRepository(User_1.User)
+        const users = await (0, typeorm_1.getRepository)(User_1.User)
             .createQueryBuilder("user")
             .where("user.username iLike :username", {
             username: `%${searchTerm}%`,
@@ -206,86 +206,86 @@ let UserResolver = class UserResolver {
     }
 };
 __decorate([
-    type_graphql_1.FieldResolver(() => [User_1.User], { nullable: true }),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Root()),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.FieldResolver)(() => [User_1.User], { nullable: true }),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Root)()),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [User_1.User, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "contacts", null);
 __decorate([
-    type_graphql_1.FieldResolver(() => [Chat_1.Chat], { nullable: true }),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Root()),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.FieldResolver)(() => [Chat_1.Chat], { nullable: true }),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Root)()),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [User_1.User, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "chats", null);
 __decorate([
-    type_graphql_1.Query(() => [User_1.User]),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
+    (0, type_graphql_1.Query)(() => [User_1.User]),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "users", null);
 __decorate([
-    type_graphql_1.Query(() => User_1.User, { nullable: true }),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Query)(() => User_1.User, { nullable: true }),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "currentUser", null);
 __decorate([
-    type_graphql_1.Mutation(() => UserResponse),
-    __param(0, type_graphql_1.Arg("options", { validate: true })),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => UserResponse),
+    __param(0, (0, type_graphql_1.Arg)("options", { validate: true })),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [RegisterInput_1.RegisterInput, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "register", null);
 __decorate([
-    type_graphql_1.Mutation(() => UserResponse),
-    __param(0, type_graphql_1.Arg("options", { validate: true })),
-    __param(1, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => UserResponse),
+    __param(0, (0, type_graphql_1.Arg)("options", { validate: true })),
+    __param(1, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [LoginInput_1.LoginInput, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "login", null);
 __decorate([
-    type_graphql_1.Mutation(() => User_1.User),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("username")),
-    __param(1, type_graphql_1.Arg("firstName")),
-    __param(2, type_graphql_1.Arg("lastName")),
-    __param(3, type_graphql_1.Arg("about", { nullable: true })),
-    __param(4, type_graphql_1.Arg("profilePictureUrl", { nullable: true })),
-    __param(5, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => User_1.User),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("username")),
+    __param(1, (0, type_graphql_1.Arg)("firstName")),
+    __param(2, (0, type_graphql_1.Arg)("lastName")),
+    __param(3, (0, type_graphql_1.Arg)("about", { nullable: true })),
+    __param(4, (0, type_graphql_1.Arg)("profilePictureUrl", { nullable: true })),
+    __param(5, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, String, String, String, Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "editProfile", null);
 __decorate([
-    type_graphql_1.Query(() => PaginatedUsers),
-    type_graphql_1.UseMiddleware(isAuth_1.isAuth),
-    __param(0, type_graphql_1.Arg("searchTerm")),
-    __param(1, type_graphql_1.Arg("limit", () => type_graphql_1.Int)),
-    __param(2, type_graphql_1.Arg("page", () => type_graphql_1.Int)),
+    (0, type_graphql_1.Query)(() => PaginatedUsers),
+    (0, type_graphql_1.UseMiddleware)(isAuth_1.isAuth),
+    __param(0, (0, type_graphql_1.Arg)("searchTerm")),
+    __param(1, (0, type_graphql_1.Arg)("limit", () => type_graphql_1.Int)),
+    __param(2, (0, type_graphql_1.Arg)("page", () => type_graphql_1.Int)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Number, Number]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "searchUsers", null);
 __decorate([
-    type_graphql_1.Mutation(() => Boolean),
-    __param(0, type_graphql_1.Ctx()),
+    (0, type_graphql_1.Mutation)(() => Boolean),
+    __param(0, (0, type_graphql_1.Ctx)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "logout", null);
 UserResolver = __decorate([
-    type_graphql_1.Resolver((of) => User_1.User)
+    (0, type_graphql_1.Resolver)((of) => User_1.User)
 ], UserResolver);
 exports.UserResolver = UserResolver;
 //# sourceMappingURL=index.js.map

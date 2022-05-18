@@ -10,7 +10,7 @@ const messageLoader = () => {
     let limit;
     let cursor;
     const messageLoader = new dataloader_1.default(async (chatIds) => {
-        const latestMessages = await typeorm_1.getConnection().query(`
+        const latestMessages = await (0, typeorm_1.getConnection)().query(`
       SELECT * FROM (
         SELECT m.*,
         ROW_NUMBER() OVER(PARTITION BY "chatId" ORDER BY "createdAt" DESC) as rn

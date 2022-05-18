@@ -16,26 +16,26 @@ const User_1 = require("./User");
 let Contact = class Contact extends typeorm_1.BaseEntity {
 };
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.ManyToOne(() => User_1.User),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.ManyToOne)(() => User_1.User),
     __metadata("design:type", User_1.User)
 ], Contact.prototype, "contact", void 0);
 __decorate([
-    typeorm_1.PrimaryColumn(),
+    (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", Number)
 ], Contact.prototype, "contactId", void 0);
 __decorate([
-    type_graphql_1.Field(),
-    typeorm_1.ManyToOne(() => User_1.User),
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.ManyToOne)(() => User_1.User),
     __metadata("design:type", User_1.User)
 ], Contact.prototype, "user", void 0);
 __decorate([
-    typeorm_1.PrimaryColumn(),
+    (0, typeorm_1.PrimaryColumn)(),
     __metadata("design:type", Number)
 ], Contact.prototype, "userId", void 0);
 Contact = __decorate([
-    type_graphql_1.ObjectType(),
-    typeorm_1.Entity()
+    (0, type_graphql_1.ObjectType)(),
+    (0, typeorm_1.Entity)()
 ], Contact);
 exports.Contact = Contact;
 //# sourceMappingURL=Contact.js.map
